@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import './App.css';
+import TaskForm from './TaskForm';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>To do app</div>
-    </>
+    <div>
+      <TaskForm />
+    </div>
   );
 }
 
