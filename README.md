@@ -16,4 +16,4 @@
 - 📝 Editing and Clearing Tasks
 
 <h3>Results</h3>
-<img src="./setup/src/assets/result.png">
+<img src="./src/assets/result.png">
