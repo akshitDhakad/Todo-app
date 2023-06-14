@@ -13,13 +13,13 @@ function App() {
   };
 
   useEffect(() => {
-    if (!tasks) return;
+    if (tasks.length === 0) return;
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
   useEffect(() => {
     const intialTask = JSON.parse(localStorage.getItem('tasks'));
-    setTasks(intialTask || []);
+    setTasks(intialTask);
   }, []);
 
   const updateDone = (index, done) => {
