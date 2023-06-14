@@ -30,8 +30,8 @@ function App() {
     });
   };
 
-  const numberCompleted = tasks ? tasks.filter((t) => t.done).length : 0;
-  const totalTasks = tasks.length;
+  // const numberCompleted = tasks ? tasks.filter((t) => t.done).length : 0;
+  // const totalTasks = tasks.length;
 
   const removeTask = (taskIndex) => {
     const newArr = [...tasks];
@@ -55,7 +55,7 @@ function App() {
     <div className="main-container">
       <main>
         <h1>ToDo App</h1>
-        <h2> Status : {`${numberCompleted} / ${totalTasks}`} </h2>
+        {/* <h2> Status : {`${numberCompleted} / ${totalTasks}`} </h2> */}
         <div className="form-container">
           <TaskForm addTasks={addTasks} />
           <div className="task-container">
