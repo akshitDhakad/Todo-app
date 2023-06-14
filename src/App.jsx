@@ -30,7 +30,9 @@ function App() {
     });
   };
 
-  const numberCompleted = tasks.filter((t) => t.done).length;
+  const numberCompleted = tasks
+    ? tasks.filter((t) => t.done).length
+    : tasks.length;
   const totalTasks = tasks.length;
 
   const removeTask = (taskIndex) => {
