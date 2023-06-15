@@ -7,19 +7,20 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const addTasks = (currTask) => {
-    setTasks((prevTask) => {
-      return [...prevTask, { currTask: currTask, done: false }];
+    setTasks((prev) => {
+      return [...prev, { currTask: currTask, done: false }];
     });
   };
 
   useEffect(() => {
+    console.log(tasks);
     if (tasks.length === 0) return;
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
   useEffect(() => {
     const intialTask = JSON.parse(localStorage.getItem('tasks'));
-    setTasks(intialTask);
+    setTasks(intialTask || []);
   }, []);
 
   const updateDone = (index, done) => {
@@ -30,8 +31,8 @@ function App() {
     });
   };
 
-  // const numberCompleted = tasks ? tasks.filter((t) => t.done).length : 0;
-  // const totalTasks = tasks.length;
+  const numberCompleted = tasks.filter((t) => t.done).length;
+  const totalTasks = tasks.length;
 
   const removeTask = (taskIndex) => {
     const newArr = [...tasks];
@@ -55,7 +56,7 @@ function App() {
     <div className="main-container">
       <main>
         <h1>ToDo App</h1>
-        {/* <h2> Status : {`${numberCompleted} / ${totalTasks}`} </h2> */}
+        <h2> Status : {`${numberCompleted} / ${totalTasks}`} </h2>
         <div className="form-container">
           <TaskForm addTasks={addTasks} />
           <div className="task-container">
@@ -78,7 +79,7 @@ function App() {
             })}
           </div>
           <button
-            className={`${tasks.length === 0 ? 'hide' : 'clear-all'}`}
+            className={`${tasks?.length === 0 ? 'hide' : 'clear-all'}`}
             onClick={removeAllTasks}
           >
             <svg
